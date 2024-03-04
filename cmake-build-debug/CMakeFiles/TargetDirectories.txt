@@ -1,0 +1,3 @@
+C:/Users/zxggx/CLionProjects/BmpAnalyzer/cmake-build-debug/CMakeFiles/BmpAnalyzer.dir
+C:/Users/zxggx/CLionProjects/BmpAnalyzer/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/zxggx/CLionProjects/BmpAnalyzer/cmake-build-debug/CMakeFiles/rebuild_cache.dir
