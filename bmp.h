@@ -34,6 +34,7 @@ class BMP {
     } fileInfoHeader{};
 #pragma pack(pop)
     std::vector<uint8_t> imageData;
+    std::vector<uint8_t> palette;
 
 
 public:
@@ -51,15 +52,40 @@ public:
 
     std::vector<uint8_t> getBComponent();
 
+    std::vector<uint8_t> convertRGBToYCbCr();
+
+    std::vector<uint8_t> convertYbCrToRGB(const std::vector<uint8_t> &data);
+
     void saveFileByComponents(const std::string &filename);
 
-    double countMathExp(char component);
+    double countMathExp(char component, const std::vector<uint8_t> &data);
 
-    double countStandardDeviation(char component);
+    double countStandardDeviation(char component, const std::vector<uint8_t> &data);
 
-    double countCorrelCoef(char component);
+    double countCorrelCoef(char component1, char component2, const std::vector<uint8_t> &data);
 
+    double countPSNR(std::vector<uint8_t> data1, std::vector<uint8_t> data2, char component);
 
+    std::vector<uint8_t> getData() {
+        return imageData;
+    }
+
+    void decimateImageEven(int num);
+
+    void decimateImageAvg();
+
+    void restoreImage(int num);
+
+private:
+
+    uint8_t saturation(double x, int x_min, int x_max) {
+        if (x < x_min) {
+            return x_min;
+        } else if (x > x_max) {
+            return x_max;
+        }
+        return static_cast<uint8_t>(x);
+    }
 };
 
 #endif //BMPANALYZER_BMP_H
